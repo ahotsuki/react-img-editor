@@ -4,15 +4,10 @@ import "tui-image-editor/dist/tui-image-editor.css";
 
 const customTheme = {
   "header.display": "none",
+  "common.backgroundColor": "#ddd",
 };
 
 const ImgEditor = ({ tui, logImageUrl, initImg }) => {
-  React.useEffect(() => {
-    console.log("changed");
-    let instance = tui.current.getInstance();
-    instance.addImageObject(initImg);
-  });
-
   return (
     <>
       <button onClick={logImageUrl}>Get Edited Image</button>
@@ -21,11 +16,11 @@ const ImgEditor = ({ tui, logImageUrl, initImg }) => {
         ref={tui}
         includeUI={{
           loadImage: {
-            path: "logo512.png",
+            path: initImg, //"logo512.png",
             name: "SampleImage",
           },
           theme: customTheme,
-          // menu: ["shape", "filter"],
+          // Edit the menu array to filter out needed menu items for editing
           menu: [
             "shape",
             "filter",
@@ -39,13 +34,13 @@ const ImgEditor = ({ tui, logImageUrl, initImg }) => {
           ],
           initMenu: "filter",
           uiSize: {
-            width: "1000px",
+            width: "1200px",
             height: "700px",
           },
-          menuBarPosition: "left",
+          menuBarPosition: "bottom",
         }}
-        cssMaxHeight={500}
-        cssMaxWidth={700}
+        cssMaxHeight={400}
+        cssMaxWidth={600}
         selectionStyle={{
           cornerSize: 20,
           rotatingPointOffset: 70,

@@ -26,24 +26,24 @@ function App() {
 
   return (
     <div className="App">
-      {/* {editing ? ( */}
-      <ImgEditor logImageUrl={logImageUrl} tui={tui} initImg={initImg} />
-      {/* ) : ( */}
-      <>
-        <div display="flex">
-          <input type="file" accept="img/*" onChange={getUrl} />
-          <div>
-            <p>Original</p>
-            <img src={initImg} alt="" width="200px" height="100px" />
+      {editing ? (
+        <ImgEditor logImageUrl={logImageUrl} tui={tui} initImg={initImg} />
+      ) : (
+        <>
+          <div display="flex">
+            <input type="file" accept="img/*" onChange={getUrl} />
+            <div>
+              <p>Original</p>
+              <img src={initImg} alt="" width="200px" height="100px" />
+            </div>
+            <div>
+              <p>Edited</p>
+              <img src={resultImg} alt="" width="200px" height="100px" />
+            </div>
           </div>
-          <div>
-            <p>Edited</p>
-            <img src={resultImg} alt="" width="200px" height="100px" />
-          </div>
-        </div>
-        <button onClick={handleEdit}>Edit Images</button>
-      </>
-      {/* )} */}
+          <button onClick={handleEdit}>Edit Images</button>
+        </>
+      )}
     </div>
   );
 }
